@@ -1,0 +1,9 @@
+.flex-container {
+    display: flex;
+    flex-basis: 100%;
+    align-self: baseline;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 5px;
+}
+

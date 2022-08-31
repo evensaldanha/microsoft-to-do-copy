@@ -1,0 +1,10 @@
+.cabecalho {
+    background-color: #D3D3D3;
+    color: #fff;
+}  
+
+.titulo-do-cadastro{
+    font-weight: 300;
+    font-size: 20px;
+    background-color: darkgray;
+}

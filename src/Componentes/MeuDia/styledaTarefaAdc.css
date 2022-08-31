@@ -1,0 +1,25 @@
+.paper {
+    margin-bottom: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-container {
+    display: flex;
+        justify-content:space-between;
+}
+
+.div-containerseguinte {
+    display: flex;
+        justify-content:space-between;
+
+}
+
+.div-containerposterior {
+    display: flex;
+        justify-content:space-between
+
+}

@@ -1,0 +1,12 @@
+.header-layout {
+    display: flex;
+    flex-direction: column;
+    background-color: #D3D3D3;
+        
+}
+
+.lista-do-menu-no-layout {
+    display: flex;
+    flex-direction: row;
+
+}
