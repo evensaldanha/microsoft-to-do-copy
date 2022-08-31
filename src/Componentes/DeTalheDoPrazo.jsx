@@ -1,8 +1,7 @@
-import { useState } from "react"
+import Calendar from 'react-calendar';
 
 export default function DetalheDoPrazo() {
-    const [day, setDay] = useState(0)
-
+{/*const [day, setDay] = useState(0)*/}
     return (
         <div className="detalhe-do-prazo">
             <label>Semanal
@@ -10,16 +9,17 @@ export default function DetalheDoPrazo() {
             </label>
 
             <p>
-                <label>Mensal
-                    <input type="checkbox" name='parazos-checbox' value='mensal' />
-                </label>
+                <label>Mensal </label>
             </p>
-            <div>
+            {/*<div>
                 <div>{day}</div>
 
                 <button onClick={() => setDay((oldDay) => oldDay + 1)}>+</button>
 
                 <button onClick={() => setDay((oldDay) => oldDay - 1)}>-</button>
+    </div>*/} 
+            <div>
+            <Calendar></Calendar>
             </div>
         </div>
     )
