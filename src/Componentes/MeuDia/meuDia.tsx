@@ -1,70 +1,132 @@
 import { Button } from "@mui/material";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
 import ListItemText from "@mui/material/ListItemText";
-import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import { TransactionContext } from "../../TransactionContext";
 
 import "./style.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Tarefa from "./TarefaAdc";
+import { Task } from "../../types/task";
 
-interface Task {
-    name: string;
-    description: string;
-}
-
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function Meudia() {
-    const [task, setTask] = useState<Task>({
-        name: "",
-        description: "",
-    });
-    
-    const [tarefas, setTarefas] = useState<Task[]>([])
+  const [newTask, setNewTask] = useState<Task>({
+    name: "",
+    description: "",
+    select: false,
+    favorite: false,
+  });
 
-        const[ newTask, setNewTask] = useState({
-        name: "",
-        description: "",
-    });
+  const { tarefas, setTarefas } = useContext(TransactionContext);
+  // const data = new Date();
+  // const dia = String(data.getDate()).padStart(2, "0");
+  // const mes = String(data.getMonth() + 1).padStart(2, "0");
+  // const ano =data.getFullYear()
+  // const dataDoDia = `${dia}/${mes}/${ano}`
 
-    const [add, setAdd] = useState<Task[]>([])
-
-
-    
+  const data = new Date();
+  const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
-    <div style={{width: '100%'}}>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <AcUnitIcon></AcUnitIcon>
-        <ListItemText>Meu dia</ListItemText>
-        <Button >...</Button>
-      </div>
+    <Box
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "40ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
 
-      <MenuItem>Opções</MenuItem>
+          <ListItemText>
+            <h2 className="meu-dia">Meu dia</h2>
+            <div className="opcoes">{opcoes}</div>
+          </ListItemText>
+        </div>
 
-      <label>
-        <input  style={{width: "100%"}} placeholder="Nome" type="text" maxLength={100} onChange={(event) => {
-            setTask(currentTask => ({ ...currentTask, name: event.target.value }))
-        }}/>
-      </label>
+        <label>
+          <TextField
+            style={{ width: "50%" }}
+            placeholder="Nome"
+            type="text"
+            required
+            value={newTask.name}
+            onChange={(event) => {
+              setNewTask?.((currentTask) => ({
+                ...currentTask,
+                name: event.target.value,
+              }));
+            }}
+          />
+        </label>
 
-      <Button variant="outlined" size="small" onClick={(e) => setTarefas((currentTarefas) => ([...currentTarefas, task]))}>        Adcionar
-      </Button>
-
-      
         <div>
-      <label>
-        <input style={{width: "100%"}} placeholder="Nova Tarefa" type="text" onChange={(event) =>{setNewTask(currentNewTask => ({...currentNewTask, name: event.target.value }))}}/>
-      </label>
-      <Button variant= 'outlined' size='small' onClick={(e) => setAdd((currentAdd) => ([...currentAdd, newTask]))}>Adcionar</Button>
-      </div>
+          <label>
+            <TextField
+              style={{ width: "50%" }}
+              required
+              variant="filled"
+              placeholder="Nova Tarefa"
+              type="text"
+              value={newTask.description}
+              onChange={(event) => {
+                setNewTask?.((currentNewTask) => ({
+                  ...currentNewTask,
+                  description: event.target.value,
+                }));
+              }}
+            />
 
-      {
-        tarefas.map((tarefa) => {
-          return <Tarefa name={tarefa.name} description={tarefa.description}/>
-        })
-      }    
-    </div>
+            <Button
+              disabled={newTask.name === "" || newTask.description === ""}
+              size="small"
+              variant="outlined"
+              onClick={(e) => 
+                setTarefas?.((currentTarefas) => [
+                  ...currentTarefas,
+                  { ...newTask },
+                ])
+              }
+            >
+              Adicionar
+            </Button>
+          </label>
+        </div>
+
+        {tarefas
+          .map((tarefa, index) => {
+            return {
+              tarefa: tarefa,
+              onChange: (event: any) => {
+                const _tarefas = [...tarefas];
+
+                _tarefas[index].select = event.target.checked;
+                setTarefas?.(_tarefas); 
+              },
+            };
+          })
+          .filter(({ tarefa }) => {
+            if (tarefa.select === true) {
+              return false;
+            } else {
+              return true;
+            }
+          })
+          .map(({ tarefa, onChange }, index) => {
+            return (
+              <Tarefa
+                key={index}
+                name={tarefa.name}
+                description={tarefa.description}
+                select={tarefa.select}
+                onChange={onChange}
+                favorit={tarefa.favorite}
+              />
+            );
+          })}
+      </div>
+    </Box>
   );
 }
