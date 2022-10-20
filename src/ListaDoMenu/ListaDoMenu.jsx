@@ -7,36 +7,39 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import GradeIcon from '@mui/icons-material/Grade';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { useState } from "react";
+import { Button } from "@mui/material";
 
 
 
 export default function ListaDoMenu() {
+  const [visivel, setVisivel] = useState("")
+  
+
   return (
     <div className="lista-do-menu">
-      <AppsIcon></AppsIcon>
-      <div>
-      <HomeIcon></HomeIcon>
-      <Link to="/home">Home</Link>
-      </div>
-      <div>
-      <AccessAlarmIcon > </AccessAlarmIcon>
+      <Button variant="contained" onClick= {(e) => setVisivel(visivelAtual => !visivelAtual) }>Menu</Button>
+      
+      <div className={visivel ? "" : "invisible"}>
+       <div className="lista-dos-itens">
+        <HomeIcon></HomeIcon>
+        <Link to="/home">Home</Link>
+      
+        <AccessAlarmIcon > </AccessAlarmIcon>
         <Link to="/prazos">Prazo</Link>
-      </div>
-      <div>
+      
         <AddTaskIcon></AddTaskIcon>
         <Link to="/tarefas">Tarefas</Link>
-      </div>
-      <div>
-      <AcUnitIcon></AcUnitIcon>
+      
+        <AcUnitIcon></AcUnitIcon>
         <Link to="/meuDia">Meu Dia</Link>
-      </div>
-      <div>
+      
         <GradeIcon></GradeIcon>
         <Link to="/importante">Importante</Link>
-      </div>
-      <div>
+      
         <PersonAddIcon></PersonAddIcon>
         <Link to="/atribuidoamim">Atribuido a mim</Link>
+      </div>
       </div>
     </div>
   )
