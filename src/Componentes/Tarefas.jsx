@@ -8,50 +8,48 @@ import CardContent from '@mui/material/CardContent';
 export default function Tarefas() {
   return (
     <div className="flex-container">
-      <Card>
+      <Card className='card'>
         <CardActionArea>
           <CardHeader
-            title='A fazer'
-            subheader="Urgente"> </CardHeader>
+            title='A fazer'>
+          </CardHeader>
           <CardContent>
-            Tarefa 1
-            Tarefa 2
+            <div>Tarefa 1</div>
+            <div>Tarefa 2</div>
           </CardContent>
         </CardActionArea>
       </Card>
-      <Card className='em-andamento '>
+      <Card className='card '>
         <CardActionArea>
           <CardHeader
             title='Em andamento'> </CardHeader>
           <CardContent>
-            Tarefa 1
-            Tarefa 2
+           <div>Tarefa 1</div>
+          <div>Tarefa 2</div>
           </CardContent>
 
         </CardActionArea>
       </Card>
-      <Card className='concluidas'>
+      <Card className='card'>
         <CardActionArea>
           <CardHeader
-
             title='Concluidas'> </CardHeader>
           <CardContent>
-            Tarefa 1
-            Tarefa 2
+          <div>Tarefa 1</div>
+          <div>Tarefa 2</div>
           </CardContent>
         </CardActionArea>
       </Card>
-      <Card className='metas'>
+      <Card className='card'>
         <CardActionArea>
           <CardHeader
             title='Metas'> </CardHeader>
           <CardContent>
-            Tarefa 1
-            Tarefa 2
+          <div>Tarefa 1</div>
+          <div>Tarefa 2</div>
           </CardContent>
         </CardActionArea>
       </Card>
-
     </div>
   )
 }
