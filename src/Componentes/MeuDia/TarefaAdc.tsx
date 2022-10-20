@@ -1,35 +1,43 @@
-import Checkbox from '@mui/material/Checkbox';
-import { Paper } from "@mui/material";
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Paper, Checkbox, CheckboxProps } from "@mui/material";
 import './styledaTarefaAdc.css'
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { useState } from 'react';
-
-
-
-
+import { useContext, useState } from "react";
+import { TransactionContext } from "../../TransactionContext";
+import Importante from "../Importante";
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-interface TarefaProps {
+interface TarefaProps { 
     name: string;
     description: string;
+    select: boolean;
+    onChange: CheckboxProps["onChange"];
+    favorit: boolean;
 }
 
-export default function Tarefa({ name, description }: TarefaProps) {
-  return (
-    <div className='container'>
-        <Paper className='paper'>
-        <div className='div-container'>
-          <Checkbox/>
-          {name}
-          {description}
-          <Checkbox  {...label} defaultChecked icon={<FavoriteBorder />}
-        checkedIcon={<Favorite />}/>
-        </div>
-        </Paper>
-    </div>
 
+
+export default function Tarefa({ name, description, select, onChange }: TarefaProps) {
+  const { tarefas, setTarefas } = useContext(TransactionContext);
+  const [ favorite, setFavorite] = useState (false)
+
+  function fav(){
+    setFavorite(!favorite)
+  }
+   return (
+    <div className='container'>
+      <Paper className='paper'>
+              <> 
+                <Checkbox onChange={onChange } checked= {select}/>
+                  {name}
+                  {description}
+                <Checkbox 
+                {...label} 
+                  defaultChecked icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite/>}
+                />
+              </>
+      </Paper>
+    </div>
   )
 }
