@@ -14,21 +14,20 @@ export default function Cadastro(props) {
 
   return (
     <div className="modal">
-    <Modal
-    open={open}
-    onClose={handleClose}
-       >
-    <div>
-   
-      <h1 className="titulo-do-cadastro" onClick={() => setClik((clicou) => !clicou)}>Cadastro</h1>
-      {
-        clik && (
-          <DetalheDoCadastro />
-        )
-      }
-    </div>
-    </Modal>
-    <Button className='botao-do-modal' onClick={handleOpen}>Cadastro</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <div>
+          <h1 className="titulo-do-cadastro" onClick={() => setClik((clicou) => !clicou)}>Cadastro</h1>
+          {
+            clik && (
+              <DetalheDoCadastro />
+            )
+          }
+        </div>
+      </Modal>
+      <Button className='botao-do-modal' onClick={handleOpen}>Cadastrar</Button>
     </div>
   )
 }
