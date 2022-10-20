@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import  TransactionsProvider from './TransactionContext';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+    <TransactionsProvider>
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
+  </TransactionsProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
