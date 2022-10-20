@@ -1,0 +1,20 @@
+.lista-do-menu {
+    display: flex;
+    background-color: darkgray; 
+    font-size: 20px;
+    flex-basis: 250px;
+    height: 100vh;
+    width: 10rem;
+    list-style: none;
+    flex-direction: column;
+}
+
+
+.invisible{
+  display: none;
+}
+
+.lista-dos-itens {
+    display: flex;
+    flex-direction: column;
+}

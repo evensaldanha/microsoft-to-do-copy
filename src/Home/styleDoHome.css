@@ -1,0 +1,15 @@
+.imagem-pai{
+    display: flex;
+    flex-direction: row;
+    padding: 3px 2px 1px;
+
+}
+
+
+ .imagens{
+    display: flex;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    padding: 5px;
+}
