@@ -15,7 +15,7 @@ export default function Meudia() {
     name: "",
     description: "",
     select: false,
-    favorite: false,
+    isFavorite: false
   });
 
   const { tarefas, setTarefas } = useContext(TransactionContext);
@@ -99,11 +99,17 @@ export default function Meudia() {
           .map((tarefa, index) => {
             return {
               tarefa: tarefa,
-              onChange: (event: any) => {
+              selectOnChange: (event: any) => {
                 const _tarefas = [...tarefas];
 
                 _tarefas[index].select = event.target.checked;
-                setTarefas?.(_tarefas); 
+                setTarefas?.(_tarefas);
+              },
+              isFavoriteOnChange: (event: any) => {
+                const _tarefas = [...tarefas];
+
+                _tarefas[index].isFavorite = event.target.checked;
+                setTarefas?.(_tarefas);
               },
             };
           })
@@ -114,15 +120,16 @@ export default function Meudia() {
               return true;
             }
           })
-          .map(({ tarefa, onChange }, index) => {
+          .map(({ tarefa, selectOnChange, isFavoriteOnChange }, index) => {
             return (
               <Tarefa
                 key={index}
                 name={tarefa.name}
                 description={tarefa.description}
                 select={tarefa.select}
-                onChange={onChange}
-                favorit={tarefa.favorite}
+                selectOnChange={selectOnChange}
+                isFavorite={tarefa.isFavorite}
+                isFavoriteOnChange={isFavoriteOnChange}
               />
             );
           })}
