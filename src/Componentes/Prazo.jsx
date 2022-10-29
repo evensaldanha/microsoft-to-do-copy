@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useState } from "react"
 import DetalheDoPrazo from "./DeTalheDoPrazo"
 
@@ -6,7 +7,7 @@ export default function Prazo() {
 
   return (
     <div className="prazos">
-      <h1 onClick={() => setShowDeadline((oldShowDeadline) => !oldShowDeadline)}>Prazos</h1>
+      <Button onClick={() => setShowDeadline((oldShowDeadline) => !oldShowDeadline)}>Prazos</Button>
 
       {
         showDeadline && (
