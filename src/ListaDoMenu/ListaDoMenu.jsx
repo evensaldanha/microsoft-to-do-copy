@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./listaDoMenu.css";
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-import AppsIcon from '@mui/icons-material/Apps';
 import HomeIcon from '@mui/icons-material/Home';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import GradeIcon from '@mui/icons-material/Grade';
