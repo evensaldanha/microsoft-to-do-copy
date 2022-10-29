@@ -19,7 +19,7 @@ export default function Cadastro(props) {
         onClose={handleClose}
       >
         <div>
-          <h1 className="titulo-do-cadastro" onClick={() => setClik((clicou) => !clicou)}>Cadastro</h1>
+          <Button className="titulo-do-cadastro" onClick={() => setClik((clicou) => !clicou)}>Cadastro</Button>
           {
             clik && (
               <DetalheDoCadastro />
