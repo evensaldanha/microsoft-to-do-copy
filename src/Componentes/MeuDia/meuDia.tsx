@@ -50,6 +50,7 @@ export default function Meudia() {
           <TextField
             style={{ width: "50%" }}
             placeholder="Nome"
+            variant="filled"
             type="text"
             required
             value={newTask.name}
