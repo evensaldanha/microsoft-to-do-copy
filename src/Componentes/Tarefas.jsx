@@ -31,25 +31,19 @@ export default function Tarefas() {
         </CardActionArea>
       </Card>
       <Card className='card'>
-        <CardActionArea>
           <CardHeader
             title='Concluidas'> </CardHeader>
           <CardContent>
           <div>Tarefa 1</div>
           <div>Tarefa 2</div>
           </CardContent>
-        </CardActionArea>
       </Card>
-      <Card className='card'>
-        <CardActionArea>
-          <CardHeader
-            title='Metas'> </CardHeader>
-          <CardContent>
-          <div>Tarefa 1</div>
-          <div>Tarefa 2</div>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Card>
+      <div className='div-tarefas'>
+        oi
+      </div>
+     </Card>
     </div>
-  )
+    
+  ) 
 }
