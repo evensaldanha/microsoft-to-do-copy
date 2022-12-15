@@ -1,10 +1,12 @@
 import Calendar from 'react-calendar';
+import '../Style/detalheDoPrazo.css';
+
 
 export default function DetalheDoPrazo() {
     return (
         <div className="detalhe-do-prazo">
             <label>Semanal
-                <input type="checkbox" name='parazos-checbox' value='semanal' />
+                <input type="checkbox" name='prazos-checbox' value='semanal' />
             </label>
             <p>
                 <label>Mensal
@@ -12,7 +14,7 @@ export default function DetalheDoPrazo() {
                 </label>
             </p>
             <div>
-                <Calendar></Calendar>
+                <Calendar className="detalhe-do-Prazo"></Calendar>
             </div>
         </div>
     )
