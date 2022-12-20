@@ -34,7 +34,7 @@ export default function ListaDoMenu() {
         <Link to="/meuDia">Meu Dia</Link>
       
         <GradeIcon></GradeIcon>
-        <Link to="/importante">Importante</Link>
+        <Link to="/favoritas">Favoritas</Link>
       
         <PersonAddIcon></PersonAddIcon>
         <Link to="/atribuidoamim">Atribuido a mim</Link>
