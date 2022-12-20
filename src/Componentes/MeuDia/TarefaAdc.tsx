@@ -21,7 +21,9 @@ export default function Tarefa({
     <div className="container">
       <Paper className="paper">
         <>
-          <Checkbox onChange={selectOnChange} checked={select} />
+          <Checkbox
+          onChange={selectOnChange} checked={select}
+        />
           {name}
           {description}
           <Checkbox
