@@ -3,7 +3,6 @@ import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { TransactionContext } from "../../TransactionContext";
-
 import "./style.css";
 import { useContext, useState } from "react";
 import Tarefa from "./TarefaAdc";
@@ -27,6 +26,7 @@ export default function Meudia() {
 
   const data = new Date();
   const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
 
   return (
     <Box
@@ -95,7 +95,6 @@ export default function Meudia() {
             </Button>
           </label>
         </div>
-
         {tarefas
           .map((tarefa, index) => {
             return {
