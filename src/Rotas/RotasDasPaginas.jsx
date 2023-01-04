@@ -5,7 +5,6 @@ import Tarefas from "../Componentes/Tarefas";
 import Layout from "../Layout/Layout";
 import Meudia from "../Componentes/MeuDia/meuDia";
 import Favoritas from "../Componentes/Favoritas";
-import AtribuidoAMim from "../Componentes/AtribuidoAMim";
 
 export default function RotasDasPaginas() {
   return (
@@ -16,7 +15,6 @@ export default function RotasDasPaginas() {
         <Route path="/prazos" element={<Prazo/>}/>
         <Route path='/meudia' element={<Meudia/>} />
         <Route path='/favoritas' element={<Favoritas/>} />
-        <Route path='/atribuidoamim' element={<AtribuidoAMim />}/>
         <Route path='/tarefas' element={<Tarefas/>} />
       </Route>
     </Routes>
