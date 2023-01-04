@@ -36,8 +36,6 @@ export default function ListaDoMenu() {
         <GradeIcon></GradeIcon>
         <Link to="/favoritas">Favoritas</Link>
       
-        <PersonAddIcon></PersonAddIcon>
-        <Link to="/atribuidoamim">Atribuido a mim</Link>
       </div>
       </div>
     </div>
