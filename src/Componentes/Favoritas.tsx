@@ -12,7 +12,7 @@ export default function Favoritas() {
           return tarefa.isFavorite;
         })
         .map(( tarefa, index ) => (
-          <div className="div-do-map" key={index}>{tarefa.name}</div>
+          <div className="div-do-map" key={index}>{tarefa.name} {tarefa.description}</div>
         ))}
     </div>
   );
