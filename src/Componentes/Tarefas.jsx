@@ -17,9 +17,10 @@ export default function Tarefas() {
  
 
   return (
+
     <div className="flex-container">
-        <Accordion>
-        <AccordionSummary
+        <Accordion className="card">
+        <AccordionSummary className="div-tarefas"
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -32,8 +33,8 @@ export default function Tarefas() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
-        <AccordionSummary
+      <Accordion className="card">
+        <AccordionSummary className="div-tarefas"
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
           id="panel2a-header"
@@ -46,8 +47,8 @@ export default function Tarefas() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
-        <AccordionSummary
+      <Accordion className="card">
+        <AccordionSummary className="div-tarefas"
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3a-content"
           id="panel3a-header"
@@ -60,10 +61,17 @@ export default function Tarefas() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <div>
+      <div className="div-tarefa">
         {tarefas.map((tarefa, index) => (
           <div className="div-tarefas" key={index}>{tarefa.name}{tarefa.description}</div>
-        ))}
+          )).filter(({ tarefa }) => {
+            if (tarefa.aFazer === true) {
+              return false;
+            } else {
+              return true;
+            }
+          })
+        }
       </div>
     </div>
 
