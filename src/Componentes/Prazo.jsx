@@ -4,6 +4,7 @@ import DetalheDoPrazo from "./DeTalheDoPrazo"
 
 export default function Prazo() {
   const [showDeadline, setShowDeadline] = useState(false);
+  const [testando, setTestando] = useState(1)
 
   return (
     <div className="prazos">
@@ -14,6 +15,11 @@ export default function Prazo() {
           <DetalheDoPrazo />
         )
       }
+
+      <div>
+        <button onClick={e => setTestando(clicou => clicou +1)}>Enviar</button>
+        <div>{testando}</div>
+      </div>
     </div>
   )
 }
