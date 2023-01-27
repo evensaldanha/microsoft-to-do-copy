@@ -1,4 +1,3 @@
-import Calendar from 'react-calendar';
 import '../Style/detalheDoPrazo.css';
 
 
@@ -14,7 +13,6 @@ export default function DetalheDoPrazo() {
                 </label>
             </p>
             <div>
-                <Calendar className="detalhe-do-Prazo"></Calendar>
             </div>
         </div>
     )
