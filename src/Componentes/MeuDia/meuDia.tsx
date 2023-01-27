@@ -13,7 +13,7 @@ export default function Meudia() {
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
-    select: false,
+    status: false,
     isFavorite: false
   });
 
@@ -26,7 +26,7 @@ export default function Meudia() {
 
   const data = new Date();
   const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
+  const isNewTaskEmpty = newTask.name === "" || newTask.description === ""
 
   return (
     <Box
@@ -81,7 +81,7 @@ export default function Meudia() {
             />
 
             <Button
-              disabled={newTask.name === "" || newTask.description === ""}
+              disabled={isNewTaskEmpty}
               size="small"
               variant="outlined"
               onClick={(e) => 
@@ -102,7 +102,7 @@ export default function Meudia() {
               selectOnChange: (event: any) => {
                 const _tarefas = [...tarefas];
 
-                _tarefas[index].select = event.target.checked;
+                _tarefas[index].status = event.target.checked;
                 setTarefas?.(_tarefas);
               },
               isFavoriteOnChange: (event: any) => {
@@ -114,25 +114,28 @@ export default function Meudia() {
             };
           })
           .filter(({ tarefa }) => {
-            if (tarefa.select === true) {
+            if (tarefa.status === true) {
               return false;
             } else {
               return true;
             }
           })
+          
           .map(({ tarefa, selectOnChange, isFavoriteOnChange }, index) => {
             return (
               <Tarefa
                 key={index}
                 name={tarefa.name}
                 description={tarefa.description}
-                select={tarefa.select}
+                status={tarefa.status}
                 selectOnChange={selectOnChange}
                 isFavorite={tarefa.isFavorite}
                 isFavoriteOnChange={isFavoriteOnChange}
               />
+              
             );
           })}
+          
       </div>
     </Box>
   );
