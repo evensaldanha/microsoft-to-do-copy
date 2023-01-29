@@ -7,13 +7,15 @@ import "./style.css";
 import { useContext, useState } from "react";
 import Tarefa from "./TarefaAdc";
 import { Task } from "../../types/task";
+import Tarefas from "../Tarefas";
+import Concluidas from "../Concluidas";
 
 
 export default function Meudia() {
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
-    status: false,
+    completed: false,
     isFavorite: false
   });
 
@@ -26,7 +28,7 @@ export default function Meudia() {
 
   const data = new Date();
   const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  const isNewTaskEmpty = newTask.name === "" || newTask.description === ""
+
 
   return (
     <Box
@@ -36,7 +38,7 @@ export default function Meudia() {
       }}
       noValidate
       autoComplete="off"
-    >
+    >s
       <div>
         <div style={{ display: "flex", flexDirection: "row" }}>
 
@@ -81,7 +83,7 @@ export default function Meudia() {
             />
 
             <Button
-              disabled={isNewTaskEmpty}
+              disabled={newTask.name === "" || newTask.description === ""}
               size="small"
               variant="outlined"
               onClick={(e) => 
@@ -102,7 +104,7 @@ export default function Meudia() {
               selectOnChange: (event: any) => {
                 const _tarefas = [...tarefas];
 
-                _tarefas[index].status = event.target.checked;
+                _tarefas[index].completed = event.target.checked;
                 setTarefas?.(_tarefas);
               },
               isFavoriteOnChange: (event: any) => {
@@ -114,29 +116,27 @@ export default function Meudia() {
             };
           })
           .filter(({ tarefa }) => {
-            if (tarefa.status === true) {
+            if (tarefa.completed === true) {
               return false;
             } else {
               return true;
             }
           })
-          
           .map(({ tarefa, selectOnChange, isFavoriteOnChange }, index) => {
             return (
               <Tarefa
                 key={index}
                 name={tarefa.name}
                 description={tarefa.description}
-                status={tarefa.status}
+                completed={tarefa.completed}
                 selectOnChange={selectOnChange}
                 isFavorite={tarefa.isFavorite}
                 isFavoriteOnChange={isFavoriteOnChange}
               />
-              
             );
           })}
-          
       </div>
+      <div><Concluidas/></div>
     </Box>
   );
 }
