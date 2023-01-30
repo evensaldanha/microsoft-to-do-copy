@@ -12,9 +12,9 @@ export default function RotasDasPaginas() {
       <Route element={<Layout/>}>
         <Route path="/" element={<Home/>} />
         <Route path="/home" element={<Home/>} />
-        <Route path="/prazos" element={<Prazo/>}/>
         <Route path='/meudia' element={<Meudia/>} />
         <Route path='/favoritas' element={<Favoritas/>} />
+        <Route path="/prazos" element={<Prazo/>}/>
         <Route path='/tarefas' element={<Tarefas/>} />
       </Route>
     </Routes>
