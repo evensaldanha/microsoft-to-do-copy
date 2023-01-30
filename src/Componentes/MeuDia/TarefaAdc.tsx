@@ -12,17 +12,18 @@ interface TarefaProps extends Task {
 export default function Tarefa({
   name,
   description,
-  select,
+  completed,
   selectOnChange,
   isFavorite,
   isFavoriteOnChange,
+ 
 }: TarefaProps) {
   return (
     <div className="container">
       <Paper className="paper">
         <>
           <Checkbox
-          onChange={selectOnChange} checked={select}
+          onChange={selectOnChange} checked={completed}
         />
           {name}
           {description}
