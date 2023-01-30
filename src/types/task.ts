@@ -1,6 +1,6 @@
 export interface Task {
     name: string;
     description: string;
-    status: boolean;
+    completed: boolean;
     isFavorite: boolean;
 }
