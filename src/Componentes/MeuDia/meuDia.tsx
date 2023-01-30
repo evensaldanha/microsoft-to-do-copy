@@ -10,13 +10,12 @@ import { Task } from "../../types/task";
 import Tarefas from "../Tarefas";
 import Concluidas from "../Concluidas";
 
-
 export default function Meudia() {
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
     completed: false,
-    isFavorite: false
+    isFavorite: false,
   });
 
   const { tarefas, setTarefas } = useContext(TransactionContext);
@@ -27,7 +26,12 @@ export default function Meudia() {
   // const dataDoDia = `${dia}/${mes}/${ano}`
 
   const data = new Date();
-  const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const opcoes = data.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   const [completedClick, setCompletedClick] = useState(false);
 
   return (
@@ -41,7 +45,6 @@ export default function Meudia() {
     >
       <div>
         <div style={{ display: "flex", flexDirection: "row" }}>
-
           <ListItemText>
             <h2 className="meu-dia">Meu dia</h2>
             <div className="opcoes">{opcoes}</div>
@@ -86,7 +89,7 @@ export default function Meudia() {
               disabled={newTask.name === "" || newTask.description === ""}
               size="small"
               variant="outlined"
-              onClick={(e) => 
+              onClick={(e) =>
                 setTarefas?.((currentTarefas) => [
                   ...currentTarefas,
                   { ...newTask },
@@ -136,17 +139,16 @@ export default function Meudia() {
             );
           })}
       </div>
-      
-        <div>
-        <Button onClick={() => setCompletedClick((oldCompleted) => !oldCompleted)}>Concluidas</Button>
 
-{
-  completedClick && (
-    <Concluidas/>
-  )
-}
-        </div>
- 
+      <div>
+        <Button
+          onClick={() => setCompletedClick((oldCompleted) => !oldCompleted)}
+        >
+          Concluidas
+        </Button>
+
+        {completedClick && <Concluidas />}
+      </div>
     </Box>
   );
 }
