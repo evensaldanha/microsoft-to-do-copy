@@ -28,7 +28,7 @@ export default function Meudia() {
 
   const data = new Date();
   const opcoes = data.toLocaleDateString("pt-BR", {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
+  const [completedClick, setCompletedClick] = useState(false);
 
   return (
     <Box
@@ -38,7 +38,7 @@ export default function Meudia() {
       }}
       noValidate
       autoComplete="off"
-    >s
+    >
       <div>
         <div style={{ display: "flex", flexDirection: "row" }}>
 
@@ -136,7 +136,17 @@ export default function Meudia() {
             );
           })}
       </div>
-      <div><Concluidas/></div>
+      
+        <div>
+        <Button onClick={() => setCompletedClick((oldCompleted) => !oldCompleted)}>Concluidas</Button>
+
+{
+  completedClick && (
+    <Concluidas/>
+  )
+}
+        </div>
+ 
     </Box>
   );
 }
