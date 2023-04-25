@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import  TransactionsProvider from './TransactionContext';
+import Header from './Header/Header';
 
 
 const root = ReactDOM.createRoot(
@@ -13,6 +14,7 @@ root.render(
     <TransactionsProvider>
   <React.StrictMode>
     <BrowserRouter>
+    <Header/>
       <App />
     </BrowserRouter>
   </React.StrictMode>
