@@ -7,26 +7,25 @@ import "./style.css";
 import { useContext, useState } from "react";
 import Tarefa from "./TarefaAdc";
 import { Task } from "../../types/task";
-import Tarefas from "../Tarefas";
 import Concluidas from "../Concluidas";
 
 export default function Meudia() {
   const [newTask, setNewTask] = useState<Task>({
-    name: "",
+    title: "",
     description: "",
     completed: false,
     isFavorite: false,
   });
-
-  const { tarefas, setTarefas } = useContext(TransactionContext);
+  
+  const { tasks, setTasks } = useContext(TransactionContext);
   // const data = new Date();
   // const dia = String(data.getDate()).padStart(2, "0");
   // const mes = String(data.getMonth() + 1).padStart(2, "0");
   // const ano =data.getFullYear()
   // const dataDoDia = `${dia}/${mes}/${ano}`
 
-  const data = new Date();
-  const opcoes = data.toLocaleDateString("pt-BR", {
+  const date = new Date();
+  const time = date.toLocaleDateString("pt-BR", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -34,47 +33,40 @@ export default function Meudia() {
   });
   const [completedClick, setCompletedClick] = useState(false);
 
-  return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "40ch" },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+    return(
+    <div>
+      <div className="div-master"
+      style={{marginLeft: "24px", marginRight: "24px",width: "100%" }}>
+        <div style={{ display: "flex", flexDirection: "row"}}>
           <ListItemText>
             <h2 className="meu-dia">Meu dia</h2>
-            <div className="opcoes">{opcoes}</div>
+            <div className="time">{time}</div>
+            <hr></hr>
           </ListItemText>
         </div>
 
         <label>
           <TextField
-            style={{ width: "50%" }}
-            placeholder="Nome"
+            placeholder="Titulo da Tarefa"
             variant="filled"
             type="text"
             required
-            value={newTask.name}
+            className="title"
+            value={newTask.title}
             onChange={(event) => {
               setNewTask?.((currentTask) => ({
                 ...currentTask,
-                name: event.target.value,
-              }));
-            }}
+                title: event.target.value,
+              }))}}
           />
         </label>
-
         <div>
           <label>
             <TextField
-              style={{ width: "50%" }}
+              style={{ width: "100%" }}
               required
               variant="filled"
-              placeholder="Nova Tarefa"
+              placeholder="Descrição da tarefa"
               type="text"
               value={newTask.description}
               onChange={(event) => {
@@ -84,37 +76,43 @@ export default function Meudia() {
                 }));
               }}
             />
-
             <Button
-              disabled={newTask.name === "" || newTask.description === ""}
+            className="botao2"
+              disabled={newTask.title === "" || newTask.description === ""}
               size="small"
               variant="outlined"
-              onClick={(e) =>
-                setTarefas?.((currentTarefas) => [
-                  ...currentTarefas,
-                  { ...newTask },
-                ])
+              onClick={ (e) => {
+                setTasks?.((currentTask) => [
+                  ...currentTask,
+                  { ...newTask }
+                ]);
+
+                setNewTask({
+                  title: "",
+                  description: "",
+                  isFavorite: false,
+                  completed: false,
+                })
               }
+            }
             >
               Adicionar
             </Button>
           </label>
         </div>
-        {tarefas
+        {tasks
           .map((tarefa, index) => {
             return {
               tarefa: tarefa,
               selectOnChange: (event: any) => {
-                const _tarefas = [...tarefas];
-
+                const _tarefas = [...tasks];
                 _tarefas[index].completed = event.target.checked;
-                setTarefas?.(_tarefas);
+                setTasks?.(_tarefas);
               },
               isFavoriteOnChange: (event: any) => {
-                const _tarefas = [...tarefas];
-
+                const _tarefas = [...tasks];
                 _tarefas[index].isFavorite = event.target.checked;
-                setTarefas?.(_tarefas);
+                setTasks?.(_tarefas);
               },
             };
           })
@@ -127,28 +125,30 @@ export default function Meudia() {
           })
           .map(({ tarefa, selectOnChange, isFavoriteOnChange }, index) => {
             return (
+              <div>
               <Tarefa
                 key={index}
-                name={tarefa.name}
+                title={tarefa.title}
                 description={tarefa.description}
                 completed={tarefa.completed}
                 selectOnChange={selectOnChange}
                 isFavorite={tarefa.isFavorite}
                 isFavoriteOnChange={isFavoriteOnChange}
+                index={index}
               />
+              </div>
             );
           })}
       </div>
-
       <div>
         <Button
-          onClick={() => setCompletedClick((oldCompleted) => !oldCompleted)}
+        style={{marginLeft: "24px", marginRight: "24px"  }}
+          onClick={() => setCompletedClick((Completo) => !Completo)}
         >
           Concluidas
         </Button>
-
         {completedClick && <Concluidas />}
       </div>
-    </Box>
-  );
+</div>
+)
 }
