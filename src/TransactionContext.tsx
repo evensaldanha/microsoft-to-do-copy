@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Task } from "./types/task";
 
 export const TransactionContext = createContext<{
-    tarefas: Task[],
-    setTarefas?: React.Dispatch<React.SetStateAction<Task[]>>,
+    tasks: Task[],
+    setTasks?: React.Dispatch<React.SetStateAction<Task[]>>,
 }>({
-    tarefas: [],
-    setTarefas: undefined,
+    tasks: [],
+    setTasks: undefined,
 })
 
 interface TransactionsProviderProps{
@@ -15,10 +15,10 @@ interface TransactionsProviderProps{
 }
 
 export default function TransactionsProvider({children}: TransactionsProviderProps) {
-    const [tarefas, setTarefas] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     return (
-        <TransactionContext.Provider value={{tarefas, setTarefas}}>
+        <TransactionContext.Provider value={{tasks, setTasks}}>
             {children}
         </TransactionContext.Provider>
     )
