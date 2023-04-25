@@ -1,31 +1,26 @@
 import "../Style/stiloDeTarefas.css";
-// import Card from '@mui/material/Card';
-// import { CardActionArea, CardHeader } from '@mui/material';
-// import CardContent from '@mui/material/CardContent';
 import { TransactionContext } from "../TransactionContext";
-import { useContext, useState } from "react";
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useContext } from "react";
+import { Paper } from "@mui/material";
+import AddTaskIcon from '@mui/icons-material/AddTask';
 
 export default function Tarefas() {
-
-  const { tarefas, setTarefas } = useContext(TransactionContext);
-
- 
-
+  const { tasks, setTasks } = useContext(TransactionContext);
   return (
-
-    <div className="flex-container">
-     
-        {tarefas.map((tarefa, index) => (
-          <div className="div-tarefas" 
+    <div className="flex-container"
+    style={{marginLeft: "24px", marginRight: "24px"  }}>
+      
+        <div style={{display:"flex", color:"#2564cf" }}>
+        <AddTaskIcon></AddTaskIcon>
+        <h1>Tarefa</h1>
+        </div>
+        {tasks.map((tarefa, index) => (
+          <Paper className="div-tarefas" 
           key={index}
+          style={{marginTop:"20px"}}
           >
-            {tarefa.name}{tarefa.description}
-          </div>
+            {tarefa.title}{tarefa.description}
+          </Paper>
         ))}  
     </div>
   )
