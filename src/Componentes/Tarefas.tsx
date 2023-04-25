@@ -20,6 +20,7 @@ export default function Tarefas() {
           style={{marginTop:"20px"}}
           >
             {tarefa.title}{tarefa.description}
+            
           </Paper>
         ))}  
     </div>
