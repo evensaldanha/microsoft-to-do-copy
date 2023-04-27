@@ -17,7 +17,7 @@ export default function Testanto() {
             onClick={(e)=> setTarefa(tarefa=> [...tarefa, novaTarefa], setNovaTarefa(""))}></button>
             {tarefa.map((item, index) =>
                  (
-                 <div>{item}</div>   
+                 <div>{item}</div>
                 )
             )}
         </div>
