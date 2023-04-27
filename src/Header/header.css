@@ -1,10 +1,26 @@
 .cabecalho {
-    background-color: #D3D3D3;
-    color: #fff;
+    display: flex;
+    background-color: #2564CF;
+    height: 48px;
+    justify-content: space-between;
+    
 }  
 
-.titulo-do-cadastro{
-    font-weight: 300;
-    font-size: 20px;
-    background-color: darkgray;
+.search{
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.icone{
+    color:#2564CF;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.icone-menu{
+    display: flex;
+    
+}
+
+

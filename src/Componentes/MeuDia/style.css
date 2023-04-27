@@ -1,15 +1,39 @@
-.div-do-botao  {
-    display: flex;
-    flex-direction: end;
-    
-}
 
 .meu-dia {
-    font-size:100
-
+    font-size:100;
+    font-weight: 500;
 }
 
-.opcoes {
-    font-weight: lighter
+.time {
+    font-weight: lighter;
+    font-weight: 200;
+    font-size: 15px;
+    color: #605E5C;
+}
 
+.div-master {
+    border-radius: 10px;
+}
+
+.title{
+    min-height: 52px;
+}
+
+.botao2 {
+    background-color: #fff;
+    color: #2564CF;
+    border-radius: 10px;
+    height: 25px;
+    border: 5px;
+    cursor: pointer;
+   
+}
+
+.botao:hover {
+    background-color: #fff;
+    color: #2564CF;
+}
+
+.line{
+    text-decoration: line-through;
 }

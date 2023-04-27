@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif, 'Times New Roman', Times, serif;
+    border-radius: 5px;
+    color: #fff;
+    height: 100vh;
+}
+
+.todo {
+    color: #2564CF;
+}
+
+.botao{
+    background-color: #2564CF;
+    color: #fff;
+    border-radius: 10px;
+    height: 25px;
+    border: 5px;
+    cursor: pointer;
+}
+
+.todo-tarefas{
+    display: flex;
+    flex-direction: column;
+    color: #2564CF;
+}

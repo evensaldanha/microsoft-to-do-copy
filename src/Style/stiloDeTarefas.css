@@ -1,11 +1,27 @@
 .flex-container {
-    display: flex;
+    flex-direction: row;
     flex-basis: 100%;
     align-self: baseline;
-    justify-content: space-between;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 10px;
+}
+
+.card {
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
 
 }
 
+.div-tarefas{
+    display: flex;
+}
 
+
+.div-tarefa{
+    border-radius: 10px;
+    margin: 15px;
+    background-color: darkgray;
+
+}
