@@ -19,7 +19,8 @@ export default function ListaDoMenu() {
 
 
   return (
-    <div className="lista-do-menu">
+    <div className="lista-do-menu" style={{border:"80px"}}>
+        <Paper style={{ height: "43.5rem" }}>
       <button
         style={{
           margin: "16px 0 0 ", height: "48px", alignItems: "center", justifyContent: "space-between",
@@ -29,7 +30,6 @@ export default function ListaDoMenu() {
         variant="contained" onClick={(e) => setVisivel(visivelAtual => !visivelAtual)}><MenuIcon style={{ borderRadius: "0px" }} /></button>
 
       <div className={visivel ? "" : "invisible"}>
-        <Paper style={{ height: "43.5rem" }}>
           <div className="lista-dos-itens">
             {/* <Link style={{ textDecoration: "none" }} to="/home"  >
               <div className="item-container" >
@@ -88,8 +88,9 @@ export default function ListaDoMenu() {
               >Testando</Link></p>
             </div>
           </div>
-        </Paper>
       </div>
+      </Paper>
+
     </div>
   )
 }
